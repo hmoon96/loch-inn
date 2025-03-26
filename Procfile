@@ -1,0 +1,1 @@
+web: gunicorn loch_inn.wsgi
