@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+</div>
+<div id="juke-header">
+    <h1>Loch Inn Juke Box</h1>
+    {% if user.is_authenticated %}
+    <div><a href="{% url 'account_logout' %}">Logout</a></div>
+    {% else %}
+    <div><a href="{% url 'account_login' %}">Login</a></div>
+    <div><a href="{% url 'account_signup' %}">Sign Up</a></div>
+    {% endif %}
+</div>
+<div id="juke-search" class="juke-container">
+    <h2>Search</h2>
+    <div>Search categories</div>
+</div>
+<div id="juke-main" class="juke-container">
+    <h1>Loch Inn Juke Box</h1>
+    <div class="video-box">video</div>
+    <h2>Coming Up Next...</h2>
+    <div>carrousel</div>
+</div>
+<div id="juke-chat" class="juke-container">
+    <h2>Live Chat</h2>
+    <div>chat</div>
+</div>
+
+{% endblock %}
