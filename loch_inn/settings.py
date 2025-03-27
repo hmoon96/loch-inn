@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
@@ -54,6 +55,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'jukebox',
+    'channels',
+
 ]
 
 SITE_ID = 1
@@ -91,6 +94,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'loch_inn.wsgi.application'
+
+ASGI_APPLICATION = 'loch_inn.asgi.application'
 
 
 # Database
@@ -147,3 +152,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+
