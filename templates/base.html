@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loch Inn JukeBox</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/0737a17f1d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 <header>
     <div id="juke-header">
-        <h1>Loch Inn Juke Box</h1>
+        <img src="{% static 'images/loch_inn_neon_md.webp' %}" alt="logo">
         <nav>
             {% if user.is_authenticated %}
             <div><a href="{% url 'account_logout' %}">Logout</a></div>

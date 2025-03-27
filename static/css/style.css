@@ -16,10 +16,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary);
     margin-top: 0px;
+    clear: both;
 }
 
+
 .juke-container {
-    background-color: rgba(189, 0, 189, 0.2);
+    background-color: rgba(88, 0, 88, 0.2);
     color: var(--primary);
     font-size: 1.5em;
     text-align: center;
@@ -45,14 +47,52 @@ h1, h2, h3, h4, h5, h6 {
     width: 250px;
 }
 
-.video-box {
+#id_chat_item_container {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 0.8rem;
+    background-color: var(--secondary);
+    color: var(--tertiary);
+    text-align: left;
+}
+
+.media-box {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;   
+}
+.media-player {
     min-width: 180px;
-    min-height: 120px;;
-    margin: 20px;
+    min-height: 120px;
+    margin: 20px auto;
     padding: 0px;
     border: 2px solid var(--primary);
     border-radius: 10px;
     box-shadow: 0 0 15px #0f5cc2;
+}
+
+.media-controls {
+    font-size: 0.9rem;  
+}
+
+.media-controls span{
+    display: inline-block;
+    float: left;
+}
+
+.media-controls span + span {
+    float: right;
+}
+
+.control-btn {
+    background-color: var(--tertiary);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 15px #0f5cc2;
+    border-radius: 50%;
+    padding: 0.5rem 0.7rem;
+    margin: 2px;
 }
 
 @media screen and (max-width: 1000px) {
