@@ -2,6 +2,10 @@
 {% load static %}
 {% block content %}
 
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
 </div>
 <div id="juke-header">
     <h1>Loch Inn Juke Box</h1>
@@ -30,7 +34,7 @@
         </center>
         <br>
         {% if request.user.is_authenticated %}
-        <center> Logout the chat Page <a href="{% url 'logout-user' %}">Logout</a></center>
+        <center> Logout the chat Page <a href="{% url 'account_logout' %}">Logout</a></center>
         {% endif %}
         <div class="chat__item__container" id="id_chat_item_container" style="font-size: 20px">
             <br />
