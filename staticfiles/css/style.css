@@ -1,3 +1,142 @@
-h1 {
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Molle&family=Roboto+Slab:wght@100..900&display=swap');
+:root {
+    --primary: magenta;
+    --secondary: white;
+    --tertiary: black;
 }
+
+body {
+    font-family: 'Roboto Slab', serif;
+    background-color: var(--tertiary);
+    color: var(--secondary);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary);
+    margin-top: 0px;
+}
+
+.juke-container {
+    background-color: var(--tertiary);
+    color: var(--primary);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #0f5cc2;
+    border: 2px solid var(--primary);  
+    box-sizing: border-box; 
+    float: left;
+}
+
+#juke-search {
+    width: 250px;
+}
+
+#juke-main {
+    width: calc(100% - 500px - 4* 16px);
+    margin: 16px 0px;
+}
+
+#juke-chat {
+    width: 250px;
+}
+
+.video-box {
+    min-width: 180px;
+    min-height: 120px;;
+    margin: 20px;
+    padding: 0px;
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #0f5cc2;
+}
+
+@media screen and (max-width: 1000px) {
+    #juke-main {
+        width: calc(100% - 3 * 16px - 250px);
+        margin-left: 16px;
+    }
+    #juke-search {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+        
+    #juke-main, #juke-search, #juke-chat {
+        width: calc(100% - 2 * 16px);
+        margin: 16px 16px 0px 16px;
+        float: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
