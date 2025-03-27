@@ -25,4 +25,3 @@ class Local_ListAdmin(admin.ModelAdmin):
     search_fields = ('embed_id', 'user_id', 'datetime_added')
     list_filter = ('embed_id', 'user_id')
     ordering = ('datetime_added')
-

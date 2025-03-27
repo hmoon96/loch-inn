@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Music_Embed(models.Model):
     """
-    
     """
     embed_code = models.CharField(max_length=255, unique=True)
     genre = models.CharField(max_length=100, blank=True)
@@ -20,7 +19,6 @@ class Music_Embed(models.Model):
 
 class Global_List(models.Model):
     """
-    
     """
     embed_id = models.ForeignKey(
         Music_Embed,
@@ -36,7 +34,6 @@ class Global_List(models.Model):
 
 class Local_List(models.Model):
     """
-    
     """
     embed_id = models.ForeignKey(
         Music_Embed,
@@ -48,5 +45,3 @@ class Local_List(models.Model):
         null=True
     )
     datetime_added = models.DateTimeField(auto_now_add=True)
-
-
