@@ -14,6 +14,9 @@ class Music_Embed(models.Model):
     album_name = models.CharField(max_length=100, blank=True)
     published_date = models.DateField()
 
+    def __str__(self):
+        return f"{self.song_name} by {self.artist_name}"
+
 
 class Global_List(models.Model):
     """
