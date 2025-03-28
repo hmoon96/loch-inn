@@ -116,14 +116,31 @@ nav a:hover {
     margin-right: auto;
     margin-left: auto;   
 }
+
 .media-player {
-    min-width: 180px;
-    min-height: 120px;
+    /* min-width: 180px;
+    min-height: 120px; */
+    /* embed sizing and position */
+    /* sourced from David @ techstacker.com */
+    min-width: 300px;
+    min-height: 169px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* styling, by us */
     margin: 20px auto;
-    padding: 0px;
     border: 2px solid var(--primary);
     border-radius: 10px;
     box-shadow: 0 0 15px #0f5cc2;
+}
+
+.media-player iframe {
+    /* sourced from David @ techstacker.com */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .media-controls {

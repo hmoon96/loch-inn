@@ -6,10 +6,10 @@ from .models import Music_Embed, Local_List
 
 
 # Create your views here.
-class HomePage(TemplateView):
-    """
-    """
-    template_name = 'jukebox/index.html'
+# class HomePage(TemplateView):
+#     """
+#     """
+#     template_name = 'jukebox/index.html'
 
 
 @login_required
@@ -29,10 +29,36 @@ def add_to_local_list(request, embed_id):
     return redirect('index')  # Replace 'index' with the name of your indexview
 
 
-def index():
-    # Get all songs from the Music_Embed model
-    songs = Music_Embed.objects.all()
-    return render(request, 'jukebox/index.html')
+# def index(request):
+#     # Get all songs from the Music_Embed model
+#     songs = Music_Embed.objects.all()
+#     local_list = Local_List.objects.filter(user_id=request.user)
+#     context = {
+#         'songs': songs,
+#         'local_list': local_list,
+#     }
+#     return render(request, 'jukebox/index.html', context)
+
+def index(request):
+    # Get the search query from the URL
+    query = request.GET.get('q', "")  # Get the search query, default to an empty string
+    if query:
+        # Filter songs based on the search query (case-insensitive)
+        songs = Music_Embed.objects.filter(song_name__icontains=query)
+    else:
+        # If no query, show no songs
+        songs = Music_Embed.objects.none()
+
+    # Get the user's local list
+    local_list = Local_List.objects.filter(user_id=request.user)
+
+    # Pass the songs and the local list to the template
+    context = {
+        'songs': songs,
+        'local_list': local_list,
+        'query': query,  # Pass the query back to the template to display in the search bar
+    }
+    return render(request, 'jukebox/index.html', context)
 
 
 def search(request):
@@ -46,7 +72,6 @@ def search(request):
 
     return render(
         request, 'jukebox/index.html', {'songs': songs, 'query': query})
-
 
 
 # def search(request, query=None):
