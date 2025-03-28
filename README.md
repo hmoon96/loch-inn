@@ -1,5 +1,43 @@
 # Loch Inn
 
+## Introduction:
+After a short brainstorming session we decided upon the idea of an online pub's Video Jukebox. This was because I perhaps too ambitiously told the group that generating a YouTube API would be as straightforward as the Spotify one I used for my capstone project.
+
+## Purpose
+The intention being that people can go online and choose some videos to watch and listen to whilst being able to have a chat with others online. We intended for a credits system to be used so that each user could select a fair amount, say 5-10 songs a day to stop one user from using the jukebox all day.
+
+## Target Audience
+As the intention of being a pub is that the conversation topics wouldn't need to be as cautious for minors so audience would be adults. Obviously there would be moderators to ensure that abuse would be handled as quickly as possible via the admin settings.
+
+## MVP and Key Features
+The video jukebox itself, a searchable list of tracks. A chat room to talk to others online at the same time.
+
+## Other features/Future developments
+We found out at the eleventh hour of production that signed artists' video channels' cannot be embedded due to YouTube copyright reasons. The 
+workaround was to link to some unsigned bands' videos and a couple of
+signed bands' live performances. If we were to continue with the site a
+workaround could be to invite unsigned bands to send their videos via an
+online form with the necessary details attached.
+
+----
+
+# AI:
+
+## How has AI helped us in the project?
+
+### **Code Creation**
+In the early stages, VS Code's co-pilot helped me out in creating an API for YouTube that could have worked if only for the fact that the YouTube server side was refusing the requests saying we had a daily amount of 0 credits.
+
+The co-pilot also helped create the code that embedded the videos into the app. I asked it questions and kept repeating the process until it gave the desired outcome. 
+
+### **Debugging**
+Co-pilot definitely helped me with finding errors in my code faster than I would have been able to alone or with traditional searching online. However I did find that over-reliance on Co-pilot made it repeat the same steps sometimes that weren't the cause of the problem. In these instances more emphasis on other developer tools like writing to the console were more helpful.
+
+### **Code Optimisation** 
+I found AI helpful to refactor whole sections of code where some variable names needed changing.
+
+### **Development**
+I (Oliver) struggled with the initial set-up of the Django server and even with pair-programming help from Hannah we found that Co-pilot was quicker to suggest how to correctly set up the development environment.
 
 ## Final Bits
 
