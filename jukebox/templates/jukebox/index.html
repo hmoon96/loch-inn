@@ -6,15 +6,14 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 
-</div>
-<div id="juke-header">
-    <h1>Loch Inn Juke Box</h1>
-    {% if user.is_authenticated %}
-    <div><a href="{% url 'account_logout' %}">Logout</a></div>
-    {% else %}
-    <div><a href="{% url 'account_login' %}">Login</a></div>
-    <div><a href="{% url 'account_signup' %}">Sign Up</a></div>
-    {% endif %}
+<!--Search engine section-->
+<!--Search toggle for medioum and small screens-->
+<div>
+    <button id="toggleSearchButton" class="control-btn">Search</button>
+    <div id="juke-search" class="juke-container hidden">
+        <h2>Search</h2>
+        <div>Search categories</div>
+    </div>
 </div>
 <div id="juke-search" class="juke-container">
     <h2>Search</h2>
@@ -40,7 +39,24 @@
 </div>
 <div id="juke-main" class="juke-container">
     <h1>Loch Inn Juke Box</h1>
-    <div class="video-box">video</div>
+    <div class="media-box">
+        <div class="media-player">
+            <div>
+                Media Player
+            </div>
+        </div>
+        <div class="media-controls">
+            <span>
+                <button id="previousButton" class="control-btn"><i class="fas fa-step-backward"></i></button>
+                <p>Previous</p>                
+            </span>
+            <span>
+                <button id="nextButton" class="control-btn"><i class="fas fa-step-forward"></i></button>
+                <p>Next</p>                
+            </span>
+        </div>
+    </div>
+
     <h2>Coming Up Next...</h2>
     <div>
         {% for song in local_list %}
@@ -52,19 +68,9 @@
 <div id="juke-chat" class="juke-container">
     <h2>Live Chat</h2>
     <div>
-        <center>
-            <h1>Hello , Welcome to my chat site ! {{request.user}}</h1>
-        </center>
-        <br>
-        {% if request.user.is_authenticated %}
-        <center> Logout the chat Page <a href="{% url 'account_logout' %}">Logout</a></center>
-        {% endif %}
-        <div class="chat__item__container" id="id_chat_item_container" style="font-size: 20px">
-            <br />
-            <input type="text" id="id_message_send_input" />
-            <button type="submit" id="id_message_send_button">Send Message</button>
-            <br />
-            <br />
+        <input type="text" id="id_message_send_input" />
+        <button type="submit" id="id_message_send_button">Send Message</button>
+        <div class="chat__item__container" id="id_chat_item_container">
         </div>
         <script>
            const chatSocket = new WebSocket(
