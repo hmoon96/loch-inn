@@ -23,12 +23,16 @@
 <div id="juke-main" class="juke-container">
     <h1>Loch Inn Juke Box</h1>
     <div class="video-box">
-        
-            <div id="player"></div> <!-- YouTube player will be dynamically embedded here -->
-
-            <!-- Include the JavaScript file -->
-            <script src="{% static 'js/video.js' %}?v=1.0"></script>
-    </div>
+    <a href="/music"<Music Video</a></div>
+        {% if embed_code %}
+            <iframe width="560" height="315" 
+            src="{{ embed_code }}" title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; 
+            encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen></iframe>
+        {% endif %}
     <h2>Coming Up Next...</h2>
     <div>carousel</div>
 </div>
@@ -81,5 +85,47 @@
         </script>
 
 
+<!-- Second chat chatSocket test -->
+
+<script>
+    const newChatSocket = new WebSocket(
+        (window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/ws/chat/"
+    );
+
+    newChatSocket.onopen = function (e) {
+        console.log("The connection was set up successfully!");
+    };
+
+    newChatSocket.onclose = function (e) {
+        console.log("Something unexpected happened!");
+    };
+
+    document.querySelector("#id_message_send_input").focus();
+    document.querySelector("#id_message_send_input").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+            document.querySelector("#id_message_send_button").click();
+        }
+    };
+
+    document.querySelector("#id_message_send_button").onclick = function (e) {
+        var messageInput = document.querySelector("#id_message_send_input").value;
+        newChatSocket.send(
+            JSON.stringify({
+                message: messageInput,
+                username: "{{ request.user.username }}",
+            })
+        );
+    };
+
+    newChatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        var div = document.createElement("div");
+        div.innerHTML = data.username + " : " + data.message;
+        document.querySelector("#id_message_send_input").value = "";
+        document.querySelector("#id_chat_item_container").appendChild(div);
+    };
+    </script>
+    </div>
+</div>
 
 {% endblock %}
