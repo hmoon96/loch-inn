@@ -35,25 +35,39 @@ def index():
     return render(request, 'jukebox/index.html')
 
 
-def search(request, query=None):
-    """"
-    """
-    # Get the search query from the URL
-    print("Request is: ", request)
-    for item in request.GET.items():
-        print("Item is: ", item)
-
+def search(request):
+    query = request.GET.get('q', "")
     if query:
         # Filter songs based on the search query (case-insensitive search)
         songs = Music_Embed.objects.filter(song_name__icontains=query)
     else:
         songs = Music_Embed.objects.all()
+        messages.error(request, "No songs found matching your search.")
 
-    if songs.count() == 0:
-        # If no songs match the query, show a message
-        messages.info(request, "No songs found matching your search.")
-        # If no query, show all songs
-        songs = Music_Embed.objects.all()
+    return render(
+        request, 'jukebox/index.html', {'songs': songs, 'query': query})
 
-    # Pass the songs and the query back to the template
-    return render(request, 'jukebox/index.html', {'songs': songs})
+
+
+# def search(request, query=None):
+#     """"
+#     """
+#     # Get the search query from the URL
+#     print("Request is: ", request)
+#     for item in request.GET.items():
+#         print("Item is: ", item)
+
+#     if query:
+#         # Filter songs based on the search query (case-insensitive search)
+#         songs = Music_Embed.objects.filter(song_name__icontains=query)
+#     else:
+#         songs = Music_Embed.objects.all()
+
+#     if songs.count() == 0:
+#         # If no songs match the query, show a message
+#         messages.info(request, "No songs found matching your search.")
+#         # If no query, show all songs
+#         songs = Music_Embed.objects.all()
+
+#     # Pass the songs and the query back to the template
+#     return render(request, 'jukebox/index.html', {'songs': songs})

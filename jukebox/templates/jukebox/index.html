@@ -10,7 +10,7 @@
 <!--Search toggle for medioum and small screens-->
 <div>
     <button id="toggleSearchButton" class="control-btn">Search</button>
-    <div id="juke-search" class="juke-container hidden">
+    <div id="juke-search-category" class="juke-container hidden">
         <h2>Search</h2>
         <div>Search categories</div>
     </div>
@@ -18,8 +18,13 @@
 <div id="juke-search" class="juke-container">
     <h2>Search</h2>
     <div>
-        <input id="search-text" type="text" name="q" placeholder="Search for a song..." class="form-control" value="{{ query }}" />
-        <a href="search/" id="search-bar" class="btn btn-primary">Search</a>
+        <!-- <input id="search-text" type="text" name="q" placeholder="Search for a song..." class="form-control" value="{{ query }}" />
+        <a href="search/" id="search-bar" class="btn btn-primary">Search</a> -->
+        <form method="GET" action="{% url 'search' %}">
+            <input id="search-text" type="text" name="q" placeholder="Search for a song..." class="form-control" value="{{ query }}" />
+            <button type="submit" id="search-bar" class="btn btn-primary">Search</button>
+
+        </form>
     </div>
 </div>
 <div id="song-list">
