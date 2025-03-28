@@ -10,13 +10,38 @@
 <!--Search toggle for medioum and small screens-->
 <div>
     <button id="toggleSearchButton" class="control-btn">Search</button>
-    <!--Search regular section-->
-    <div id="juke-search" class="juke-container">
+    <div id="juke-search-category" class="juke-container hidden">
         <h2>Search</h2>
         <div>Search categories</div>
     </div>
 </div>
-<!--Juke Box media player section-->
+<div id="juke-search" class="juke-container">
+    <h2>Search</h2>
+    <div>
+        <!-- <input id="search-text" type="text" name="q" placeholder="Search for a song..." class="form-control" value="{{ query }}" />
+        <a href="search/" id="search-bar" class="btn btn-primary">Search</a> -->
+        <form method="GET" action="{% url 'search' %}">
+            <input id="search-text" type="text" name="q" placeholder="Search for a song..." class="form-control" value="{{ query }}" />
+            <button type="submit" id="search-bar" class="btn btn-primary">Search</button>
+
+        </form>
+    </div>
+</div>
+<div id="song-list">
+    {% if songs %}
+        {% for song in songs %}
+        <div class="song-item">
+            <p>{{ song.song_name }} by {{ song.artist_name }}</p>
+            <form method="post" action="{% url 'add_to_local_list' song.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Add to Local List</button>
+            </form>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No songs found matching "{{ query }}".</p>
+    {% endif %}
+</div>
 <div id="juke-main" class="juke-container">
     <h1>Loch Inn Juke Box</h1>
     <div class="media-box">
@@ -38,9 +63,12 @@
     </div>
 
     <h2>Coming Up Next...</h2>
-    <div>Carrousel</div>
+    <div>
+        {% for song in local_list %}
+        • {{ song }}
+        {% endfor %}
+    </div>
 </div>
-<!--Chat section-->
 <div id="juke-chat" class="juke-container">
     <h2>Live Chat</h2>
     <div>
