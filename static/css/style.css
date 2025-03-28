@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Molle&family=Roboto+Slab:wght@100..900&display=swap');
 :root {
-    --primary: magenta;
+    --primary: rgb(167, 35, 255);
     --secondary: white;
     --tertiary: black;
 }

@@ -5,6 +5,17 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+
+<!--Search engine section-->
+<!--Search toggle for medioum and small screens-->
+<div>
+    <button id="toggleSearchButton" class="control-btn">Search</button>
+    <div id="juke-search" class="juke-container hidden">
+        <h2>Search</h2>
+        <div>Search categories</div>
+    </div>
+</div>
+<!--Search regular section-->
 <div>
     <div id="juke-search" class="juke-container">
         <h2>Search</h2>
