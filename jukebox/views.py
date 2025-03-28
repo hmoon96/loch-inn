@@ -6,10 +6,10 @@ from .models import Music_Embed, Local_List
 
 
 # Create your views here.
-class HomePage(TemplateView):
-    """
-    """
-    template_name = 'jukebox/index.html'
+# class HomePage(TemplateView):
+#     """
+#     """
+#     template_name = 'jukebox/index.html'
 
 
 @login_required
@@ -29,10 +29,15 @@ def add_to_local_list(request, embed_id):
     return redirect('index')  # Replace 'index' with the name of your indexview
 
 
-def index():
+def index(request):
     # Get all songs from the Music_Embed model
     songs = Music_Embed.objects.all()
-    return render(request, 'jukebox/index.html')
+    local_list = Local_List.objects.filter(user_id=request.user)
+    context = {
+        'songs': songs,
+        'local_list': local_list,
+    }
+    return render(request, 'jukebox/index.html', context)
 
 
 def search(request):
@@ -46,7 +51,6 @@ def search(request):
 
     return render(
         request, 'jukebox/index.html', {'songs': songs, 'query': query})
-
 
 
 # def search(request, query=None):

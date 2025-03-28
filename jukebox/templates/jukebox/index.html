@@ -23,7 +23,6 @@
         <form method="GET" action="{% url 'search' %}">
             <input id="search-text" type="text" name="q" placeholder="Search for a song..." class="form-control" value="{{ query }}" />
             <button type="submit" id="search-bar" class="btn btn-primary">Search</button>
-
         </form>
     </div>
 </div>
@@ -38,9 +37,9 @@
             </form>
         </div>
         {% endfor %}
-    {% else %}
+    <!-- {% else %}
         <p>No songs found matching "{{ query }}".</p>
-    {% endif %}
+    {% endif %} -->
 </div>
 <div id="juke-main" class="juke-container">
     <h1>Loch Inn Juke Box</h1>
@@ -62,11 +61,12 @@
         </div>
     </div>
 
-    <h2>Coming Up Next...</h2>
+    <h2>Coming Up Next... Hannah</h2>
     <div>
         {% for song in local_list %}
-        • {{ song }}
+        • {{ song.embed_id.song_name }} by {{ song.embed_id.artist_name }}<br>
         {% endfor %}
+        {{local_list.embed_id}}
     </div>
 </div>
 
