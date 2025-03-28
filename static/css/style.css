@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Molle&family=Roboto+Slab:wght@100..900&display=swap');
+
 :root {
     --primary: rgb(167, 35, 255);
-    --secondary: white;
+    --secondary: rgb(59, 209, 255);
     --tertiary: black;
 }
 
@@ -17,6 +18,39 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary);
     margin-top: 0px;
     clear: both;
+}
+
+/* Style for the header */
+header {
+    position: relative; /* Allows positioning of child elements */
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+    border-bottom: var(--primary) solid 1px;
+    box-shadow: 0 0 15px #0f5cc2;
+}
+
+/* Style for the navigation bar */
+nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Style for the nav links */
+nav a {
+    text-decoration: none; /* Remove underline */
+    color: var(--primary); /* Use your primary color variable */
+    font-weight: bold; /* Optional: Make the text bold */
+    margin: 0 0.5rem; /* Add spacing between links */
+}
+
+
+/* Add hover effect for links */
+nav a:hover {
+    color: var(--secondary); /* Change color on hover */
 }
 
 
@@ -35,7 +69,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #juke-search {
-    width: 250px;
+    position: static; /* Normal flow of the document */
+    width: 250px; /* Fixed width */
+    height: auto;
+    transform: none; /* No sliding effect */
+    transition: none; /* No animation */
+    display: block; /* Always visible */
+}
+
+/* Default: Show the toggle button */
+#toggleSearchButton {
+    display: block;
+}
+
+/* Show the menu */
+#juke-search.open {
+    transform: translateY(0);
+}
+
+/* Hidden state */
+.hidden {
+    display: none;
 }
 
 #juke-main {
@@ -118,10 +172,23 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: 16px;
     }
     #juke-search {
-        position: absolute;
+        position: fixed;
         bottom: 0;
-        left: 0;
+        right: 0;
         width: 90%;
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        border-radius: 10px 10px 0 0;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+        display: none; /* Initially hidden */
+    }
+    /* Show the menu when the "open" class is added */
+    #juke-search.open {
+        transform: translateY(0);
+        display: block;
     }
 }
 
@@ -131,6 +198,22 @@ h1, h2, h3, h4, h5, h6 {
         width: calc(100% - 2 * 16px);
         margin: 16px 16px 0px 16px;
         float: none;
+    }
+}
+
+/* Hide the toggle button for screens larger than 1000px */
+@media screen and (min-width: 1000px) {
+    #toggleSearchButton {
+        display: none;
+    }
+}
+
+/* Ensure #juke-search is always visible for larger screens */
+@media screen and (min-width: 1000px) {
+    #juke-search {
+        display: block;
+        position: static; /* Normal flow of the document */
+        transform: none; /* No sliding effect */
     }
 }
 
