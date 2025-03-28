@@ -26,18 +26,19 @@
     <h1>Loch Inn Juke Box</h1>
     <div class="media-box">
         <div class="media-player">
-            <div>
-                Media Player
-            </div>
+            <iframe width="300" height="169" src="{{  }}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="media-controls">
             <span>
                 <button id="previousButton" class="control-btn"><i class="fas fa-step-backward"></i></button>
-                <p>Previous</p>                
+                <p>Previous</p>
             </span>
             <span>
                 <button id="nextButton" class="control-btn"><i class="fas fa-step-forward"></i></button>
-                <p>Next</p>                
+                <p>Next</p>
             </span>
         </div>
     </div>
@@ -53,7 +54,7 @@
         <div class="chat__item__container" id="id_chat_item_container">
         </div>
         <script>
-           const chatSocket = new WebSocket(
+            const chatSocket = new WebSocket(
                 (window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/"
             );
             chatSocket.onopen = function (e) {
