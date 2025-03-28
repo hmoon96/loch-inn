@@ -43,6 +43,15 @@
 </div>
 <div id="juke-main" class="juke-container">
     <h1>Loch Inn Juke Box</h1>
+    <div class="video-box">
+        
+            <div id="player"></div> <!-- YouTube player will be dynamically embedded here -->
+
+            <!-- Include the JavaScript file -->
+            <script src="{% static 'js/video.js' %}?v=1.0"></script>
+    </div>
+    <h2>Coming Up Next...</h2>
+    <div>carousel</div>
     <div class="media-box">
         <div class="media-player">
             <iframe width="300" height="169" src="{{  }}"
@@ -79,7 +88,7 @@
         </div>
         <script>
             const chatSocket = new WebSocket(
-                (window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/"
+                (window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/ws/chat/"
             );
             chatSocket.onopen = function (e) {
                 console.log("The connection was setup successfully !");
@@ -107,7 +116,7 @@
                 document.querySelector("#id_chat_item_container").appendChild(div);
             };
         </script>
-    </div>
-</div>
+
+
 
 {% endblock %}
