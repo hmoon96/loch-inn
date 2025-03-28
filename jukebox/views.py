@@ -8,3 +8,10 @@ class HomePage(TemplateView):
     
     """
     template_name = 'jukebox/index.html'
+
+
+class MusicPage(TemplateView):
+    """
+    
+    """
+    template_name = 'jukebox/music.html'
