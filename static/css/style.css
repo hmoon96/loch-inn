@@ -117,7 +117,7 @@ nav a:hover {
     margin-left: auto;   
 }
 
-.media-player {
+#player {
     /* min-width: 180px;
     min-height: 120px; */
     /* embed sizing and position */
@@ -134,7 +134,7 @@ nav a:hover {
     box-shadow: 0 0 15px #0f5cc2;
 }
 
-.media-player iframe {
+#player iframe {
     /* sourced from David @ techstacker.com */
     position: absolute;
     top: 0;

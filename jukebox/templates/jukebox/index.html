@@ -40,48 +40,16 @@
                 {% endif %}
             </div>
             {% endfor %}
-            {% else %}
+            {% elif query != "" %}
             <p>No songs found matching "{{ query }}".</p>
             {% endif %}
         </div>
     </div>
 </div>
-
-    </div>
-</div>
-<div id="song-list">
-    {% if songs %}
-        {% for song in songs %}
-        <div class="song-item">
-            <p>{{ song.song_name }} by {{ song.artist_name }}</p>
-            <form method="post" action="{% url 'add_to_local_list' song.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Add to Local List</button>
-            </form>
-        </div>
-        {% endfor %}
-    <!-- {% else %}
-        <p>No songs found matching "{{ query }}".</p>
-    {% endif %} -->
-</div>
 <div id="juke-main" class="juke-container">
     <h1>Loch Inn Juke Box</h1>
     <div class="video-box">
-        
-            <div id="player"></div> <!-- YouTube player will be dynamically embedded here -->
-
-            <!-- Include the JavaScript file -->
-            <script src="{% static 'js/video.js' %}?v=1.0"></script>
-    </div>
-    <h2>Coming Up Next...</h2>
-    <div>carousel</div>
-    <div class="media-box">
-        <div class="media-player">
-            <iframe width="300" height="169" src="{{  }}"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
+        <div id="player"></div> <!-- YouTube player will be dynamically embedded here -->
         <div class="media-controls">
             <span>
                 <button id="previousButton" class="control-btn"><i class="fas fa-step-backward"></i></button>
@@ -92,8 +60,9 @@
                 <p>Next</p>
             </span>
         </div>
+        <!-- Include the JavaScript file -->
+        <script src="{% static 'js/video.js' %}?v=1.0"></script>
     </div>
-
     <h2>Coming Up Next...</h2>
     <div>
         {% for song in local_list %}
@@ -143,7 +112,8 @@
                 document.querySelector("#id_chat_item_container").appendChild(div);
             };
         </script>
-
+    </div>
+</div>
 
 
 {% endblock %}
