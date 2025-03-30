@@ -1,5 +1,5 @@
   // List of video IDs for the playlist
-  const playlist = ['kfihbSkGX2g', 'XQ2r1XRAmZE', 'knZlD5uXNEw', 'HCmIP2MRgUU', 'upPl9mZW_zw'];
+  const playlist = ['kfihbSkGX2g', 'XQ2r1XRAmZE', 'knZlD5uXNEw', 'upPl9mZW_zw'];
   console.log("Current Playlist:", playlist);
   let currentVideoIndex = 0; // Start with the first video in the playlist
 
