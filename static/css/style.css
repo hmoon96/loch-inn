@@ -53,6 +53,9 @@ nav a:hover {
     color: var(--secondary); /* Change color on hover */
 }
 
+#nextButton, #previousButton {
+    cursor: pointer;
+}
 
 .juke-container {
     background-color: rgba(88, 0, 88, 0.2);

@@ -58,3 +58,14 @@
       player.loadVideoById(playlist[currentVideoIndex]);
     }
   }
+
+  // Next button event listener
+  document.getElementById('nextButton').addEventListener('click', function() {
+    playNextVideo(); // Play the next video in the playlist
+  });
+
+  // Previous button event listener
+  document.getElementById('previousButton').addEventListener('click', function() {
+    currentVideoIndex = (currentVideoIndex - 1 + playlist.length) % playlist.length; // Loop back to the end if at the start
+    player.loadVideoById(playlist[currentVideoIndex]); // Load the previous video
+  });
