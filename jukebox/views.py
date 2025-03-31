@@ -50,7 +50,11 @@ def index(request):
         songs = Music_Embed.objects.none()
 
     # Get the user's local list
-    local_list = Local_List.objects.filter(user_id=request.user)
+    print("current user: ", request.user)
+    if request.user.is_authenticated:
+        local_list = Local_List.objects.filter(user_id=request.user)
+    else:
+        local_list = Local_List.objects.none()
 
     # Pass the songs and the local list to the template
     context = {
